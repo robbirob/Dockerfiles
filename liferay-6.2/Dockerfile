@@ -21,8 +21,8 @@ ADD lep/portal-bundle.properties /opt/liferay-portal-6.2-ce-ga6/portal-bundle.pr
 ADD lep/portal-bd-MYSQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-MYSQL.properties
 #ADD lep/portal-bd-POSTGRESQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-POSTGRESQL.properties
 
-ENV LIFERAY_HOME=/home/user/liferay-portal-6.2-ce-ga6 \
-    CATALINA_HOME=$LIFERAY_HOME/tomcat-7.0.62
+ENV LIFERAY_HOME=/home/user/liferay-portal-6.2-ce-ga6
+
 
 # volumes
 VOLUME ["/var/liferay-home", "/home/user/liferay-portal-6.2-ce-ga6/"]
