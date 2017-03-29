@@ -11,7 +11,7 @@ ENV M2_HOME=/home/user/apache-maven-$MAVEN_VERSION
 ENV PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
 # install liferay
-RUN cd /home/user && curl -O -k -L -C - http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.2.5%20GA6/liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip \
+RUN cd /home/user && curl -O -s -k -L -C - http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.2.5%20GA6/liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip \
     && unzip liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip -d /home/user \
     && sudo rm liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip && cd -
 # add config for bdd
@@ -20,6 +20,10 @@ RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-b
 ADD lep/portal-bundle.properties /opt/liferay-portal-6.2-ce-ga6/portal-bundle.properties
 ADD lep/portal-bd-MYSQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-MYSQL.properties
 #ADD lep/portal-bd-POSTGRESQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-POSTGRESQL.properties
+
+ENV LIFERAY_HOME=/home/user/liferay-portal-6.2-ce-ga6 \
+    CATALINA_HOME=$LIFERAY_HOME/tomcat-7.0.62
+
 # volumes
 VOLUME ["/var/liferay-home", "/home/user/liferay-portal-6.2-ce-ga6/"]
 
