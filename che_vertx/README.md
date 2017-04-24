@@ -1,0 +1,1 @@
+Dockerfile for Eclipse Che with Vert.x 3.1.0
